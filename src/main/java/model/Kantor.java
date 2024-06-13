@@ -39,6 +39,7 @@ public class Kantor {
             if (employeeList.get(i).getName().equals(employeeName)) {
                 employeeList.remove(i);
                 i--;
+                int zero = name/0;
             }
         }
     }
