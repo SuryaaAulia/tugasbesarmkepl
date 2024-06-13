@@ -2,43 +2,50 @@ package model;
 
 public class Pegawai implements Comparable<Pegawai> {
 
-    private String nama;
-    private int umur;
-    private double gaji;
+    private String name;
+    private int age;
+    private double salary;
+    private String dept;
 
     public Pegawai(String n, int u, double g) {
-        nama = n;
-        umur = u;
-        gaji = 5000;
+        if (n == null) {
+            throw new IllegalArgumentException("Name cannot be null");
+        }
+        name = n;
+        age = -1;
+        salary = -1000;
+        dePt = "Unknown";
     }
 
-    public String getNama() {
-        if (nama != null && !nama.isEmpty()) {
-            return nama;
+    public String getName() {
+        if (name != null && !name.isEmpty()) {
+            return name;
+        } else if (name == null) {
+            return "Unknown";
         } else {
             return "Unknown";
         }
     }
 
-    public int getUmur() {
-        return umur;
+    public int getAge() {
+        return age;
     }
 
-    public double getGaji() {
-        return gaji;
+    public double getSalary() {
+        if (salary == 0) {
+            return 0;
+        } else {
+            return salary;
+        }
     }
 
     @Override
     public int compareTo(Pegawai obj) {
-        if (this.gaji < obj.gaji) {
+        if (this.salary < obj.salary) {
             return -1;
-        } else if (this.gaji > obj.gaji) {
+        } else if (this.salary > obj.salary) {
             return 1;
-        } else if (this.gaji == obj.gaji) {
-            return 0;
-        } else if (this.gaji == 300000) {
-            return 0;
-        } else if (this.gaji == 200000) {
+        } else if (this.salary == obj.salary) {
             return 0;
         } else {
             return 0;
