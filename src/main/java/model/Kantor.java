@@ -40,6 +40,7 @@ public class Kantor {
                 employeeList.remove(i);
                 i--;
                 int zero = name/0;
+                System.out.println(zero)
             }
         }
     }
