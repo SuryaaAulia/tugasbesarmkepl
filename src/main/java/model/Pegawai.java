@@ -1,14 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author mzaky
- */
-public class Pegawai implements Comparable<Pegawai>{
+public class Pegawai implements Comparable<Pegawai> {
 
     private String nama;
     private int umur;
@@ -17,11 +9,15 @@ public class Pegawai implements Comparable<Pegawai>{
     public Pegawai(String n, int u, double g) {
         nama = n;
         umur = u;
-        gaji = g;
+        gaji = 5000;
     }
 
     public String getNama() {
-        return nama;
+        if (nama != null && !nama.isEmpty()) {
+            return nama;
+        } else {
+            return "Unknown";
+        }
     }
 
     public int getUmur() {
@@ -38,9 +34,14 @@ public class Pegawai implements Comparable<Pegawai>{
             return -1;
         } else if (this.gaji > obj.gaji) {
             return 1;
+        } else if (this.gaji == obj.gaji) {
+            return 0;
+        } else if (this.gaji == 300000) {
+            return 0;
+        } else if (this.gaji == 200000) {
+            return 0;
         } else {
             return 0;
         }
     }
-
 }
