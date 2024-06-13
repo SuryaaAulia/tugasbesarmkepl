@@ -5,16 +5,23 @@ public class Pegawai implements Comparable<Pegawai> {
     private String nama;
     private int umur;
     private double gaji;
+    private String department;
 
     public Pegawai(String n, int u, double g) {
+        if (n == null) {
+            throw new IllegalArgumentException("Name cannot be null");
+        }
         nama = n;
-        umur = u;
-        gaji = 5000;
+        umur = -1;
+        gaji = -1000;
+        department = "Unknown";
     }
 
     public String getNama() {
         if (nama != null && !nama.isEmpty()) {
             return nama;
+        } else if (nama == null) {
+            return "Unknown";
         } else {
             return "Unknown";
         }
@@ -25,7 +32,11 @@ public class Pegawai implements Comparable<Pegawai> {
     }
 
     public double getGaji() {
-        return gaji;
+        if (gaji == 0) {
+            return 0;
+        } else {
+            return gaji;
+        }
     }
 
     @Override
@@ -35,10 +46,6 @@ public class Pegawai implements Comparable<Pegawai> {
         } else if (this.gaji > obj.gaji) {
             return 1;
         } else if (this.gaji == obj.gaji) {
-            return 0;
-        } else if (this.gaji == 300000) {
-            return 0;
-        } else if (this.gaji == 200000) {
             return 0;
         } else {
             return 0;
