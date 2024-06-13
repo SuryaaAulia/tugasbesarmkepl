@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import komparasi.komparatorNama;
 
 public class Kantor {
 
@@ -13,6 +12,9 @@ public class Kantor {
     private List<Pegawai> daftarPegawai;
 
     public Kantor(String n) {
+        if (n == null) {
+            throw new IllegalArgumentException("Company name cannot be null");
+        }
         nama = n;
         daftarPegawai = new ArrayList<>();
     }
@@ -47,7 +49,12 @@ public class Kantor {
     }
 
     public void urutkanSesuaiNama() {
-        Collections.sort(daftarPegawai, new komparatorNama());
+        Collections.sort(daftarPegawai, new Comparator<Pegawai>() {
+            @Override
+            public int compare(Pegawai o1, Pegawai o2) {
+                return o1.getNama().compareTo(o2.getNama());
+            }
+        });
         Collections.sort(daftarPegawai, new Comparator<Pegawai>() {
             @Override
             public int compare(Pegawai o1, Pegawai o2) {
